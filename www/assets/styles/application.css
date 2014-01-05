@@ -1,0 +1,13 @@
+
+body {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+/**
+ * Bootstrap Overrides
+ */
+.tab-pane {
+  margin-top: 20px;
+}
+

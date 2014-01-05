@@ -1,0 +1,10 @@
+.DS_Store
+composer.phar
+composer.lock
+vendor
+files
+.env
+tests/api/node_modules
+sftp-config.json
+mobileapp
+

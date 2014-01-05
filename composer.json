@@ -1,0 +1,22 @@
+{
+    "name": "Packagim",
+    "authors": [
+        {
+            "name": "Vance Lucas",
+            "email": "vance@vancelucas.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "app/src/"
+        }
+    },
+    "require": {
+        "vlucas/bulletphp":      "1.x",
+        "guzzle/guzzle":         "~3.8",
+        "knplabs/packagist-api": "1.*@dev",
+        "vlucas/phpdotenv": "~1.0.3",
+        "vlucas/spot": "~0.9.8",
+        "vlucas/hyperspan": "~0.1"
+    }
+}
