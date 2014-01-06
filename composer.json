@@ -15,10 +15,10 @@
         "vlucas/bulletphp":      "1.x",
         "guzzle/guzzle":         "~3.8",
         "knplabs/packagist-api": "1.*@dev",
-        "vlucas/phpdotenv": "~1.0.3",
-        "vlucas/spot": "~0.9.8",
-        "vlucas/hyperspan": "~0.1",
-        "opauth/opauth": "~0.4.4",
-        "opauth/github": "~0.1.0"
+        "vlucas/phpdotenv":      "1.0.4",
+        "vlucas/spot":           "~0.9.8",
+        "vlucas/hyperspan":      "~0.1",
+        "opauth/opauth":         "~0.4.4",
+        "opauth/github":         "~0.1.0"
     }
 }

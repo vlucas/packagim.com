@@ -1,10 +1,7 @@
 global:
   env:
     - BULLET_ENV: production
-    - DB_USER: root
-    - DB_PASS:
-    - DB_HOST: tunnel.pagodabox.com:3306
-    - DB_NAME: packagim-production
+    - DATABASE: mysql://root@localhost/packagim
 
 # Web instance
 web1:

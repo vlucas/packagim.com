@@ -18,7 +18,6 @@ if(defined('PHPUNIT_RUN')) {
 // Load required environment variables from .env in development
 if(BULLET_ENV == 'development') {
     Dotenv::load(dirname(__DIR__));
-    var_dump($_ENV);
 }
 Dotenv::required([
     'DATABASE', 'ENCRYPTION_KEY',

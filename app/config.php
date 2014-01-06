@@ -18,8 +18,8 @@ return [
 
             'Strategy' => array(
                 'GitHub' => array(
-                    'client_id'     => $_ENV['GITHUB_APP_ID'],
-                    'client_secret' => getenv('GITHUB_APP_SECRET')
+                    'client_id'     => $_SERVER['GITHUB_APP_ID'],
+                    'client_secret' => $_SERVER['GITHUB_APP_SECRET']
                 ),
             ),
         ]
