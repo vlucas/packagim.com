@@ -1,0 +1,69 @@
+global:
+  env:
+    - BULLET_ENV: production
+    - DB_USER: root
+    - DB_PASS:
+    - DB_HOST: tunnel.pagodabox.com:3306
+    - DB_NAME: packagim-production
+
+# Web instance
+web1:
+  name: packagim
+  index_list: [index.php]
+  document_root: /www
+  after_build:
+    - "rm -rf vendor composer.lock"
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install;"
+  after_deploy:
+    - "php index.php -u 'db/migrate'"
+  php_date_timezone: "UTC"
+  php_session_save_handler: redis
+  php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
+  php_version: 5.4.14
+  php_extensions:
+    - curl
+    - exif
+    - intl
+    - mbstring
+    - mcrypt
+    - memcached
+    - pdo_mysql
+    - gd
+    - redis
+    - zip
+
+# Daemon process that sends push notifications
+worker1:
+  type: php
+  exec: "php index.php -u task/daemon"
+  after_build:
+    - "rm -rf vendor composer.lock"
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install;"
+  after_deploy:
+    - "php index.php -u 'db/migrate'"
+  php_date_timezone: "UTC"
+  php_session_save_handler: redis
+  php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
+  php_version: 5.4.14
+  php_extensions:
+    - curl
+    - exif
+    - intl
+    - mbstring
+    - mcrypt
+    - memcached
+    - pdo_mysql
+    - gd
+    - redis
+    - zip
+
+# Database
+db1:
+  name: packagim-production
+  type: mysql
+
+# Redis for session storage
+cache1:
+  name: packagim-redis
+  type: redis
+
