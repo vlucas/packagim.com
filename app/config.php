@@ -7,5 +7,22 @@ return [
         'path_layouts' => __DIR__ . '/templates/layout/',
         'auto_layout' => 'application'
     ],
+
+    'config' => [
+        // Opauth - OAuth provider
+        // @link http://opauth.org
+        'opauth' => [
+            'path' => '/oauth/',
+            'callback_url' => '{path}callback',
+            'security_salt' => '43#f47$ce919890e68146ee&46dd4^abe9c!1fd98b051d',
+
+            'Strategy' => array(
+                'GitHub' => array(
+                    'client_id'     => $_ENV['GITHUB_APP_ID'],
+                    'client_secret' => getenv('GITHUB_APP_SECRET')
+                ),
+            ),
+        ]
+    ]
 ];
 

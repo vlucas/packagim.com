@@ -6,19 +6,6 @@ ini_set('display_errors', '1');
 ini_set("session.cookie_httponly", '1'); // Mitigate XSS javascript cookie attacks for browers that support it
 ini_set("session.use_only_cookies", '1'); // Don't allow session_id in URLs
 
-// Load required environment files
-Dotenv::load(dirname(__DIR__));
-Dotenv::required([
-    'DATABASE', 'ENCRYPTION_KEY',
-]);
-
-// ENV globals
-if(defined('PHPUNIT_RUN')) {
-    define('BULLET_ENV', 'testing');
-} else {
-    define('BULLET_ENV', $request->env('BULLET_ENV', 'development'));
-}
-
 // Production setting switch
 if(BULLET_ENV == 'production') {
     // Hide errors in production
@@ -64,6 +51,12 @@ $app['mapper'] = function($app) use($request) {
 $app['guzzle'] = function($app) use($request) {
     $client = new Guzzle\Http\Client();
     return $client;
+};
+
+// Share 'Opauth' instance
+$app['opauth'] = function($app) use($app, $request) {
+    $opauth = new Opauth($app['config']['opauth'], false);
+    return $opauth;
 };
 
 // Share SwiftMailer instance
