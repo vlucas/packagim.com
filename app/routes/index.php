@@ -2,17 +2,18 @@
 // Options from root URL (should expose all available user choices)
 $app->path(array('/', 'index'), function($request) {
     $this->get(function($request) {
-        $res = new Hyperspan\Response();
-        $res->title = 'Main';
-        $res->rel = array('index');
-        $res->class = array('index');
-        $res->addLink('index_nav', [
+        // Response data
+        $data = new Hyperspan\Response();
+        $data->title = 'Main';
+        $data->rel = array('index');
+        $data->class = array('index');
+        $data->addLink('index_nav', [
             'rel' => ['nav', 'home'],
             'class' => ['home'],
             'title' => t('Home'),
             'href' => $this->url('/')
         ]);
-        $res->addAction('search', [
+        $data->addAction('search', [
             'title' => 'Package Search',
             'href'   => $this->url('/search/'),
             'method' => 'GET',
@@ -20,7 +21,13 @@ $app->path(array('/', 'index'), function($request) {
                 ['name' => 'name', 'type' => 'string']
             ]
         ]);
-        return $res;
+
+        $this->format('json', function($request) use($data) {
+            return $data;
+        });
+        $this->format('html', function($request) use($data) {
+            return $this->template('index', compact('data'));
+        });
     });
 });
 

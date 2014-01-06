@@ -1,5 +1,6 @@
 <?php
 $app = app();
+$user = $app['user'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,46 +8,47 @@ $app = app();
   <title>Packagim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link href="<?php echo $app->url('/assets/styles/bootstrap.min.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
-  <link href="<?php echo $app->url('/assets/styles/bootstrap-datetimepicker.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700" rel="stylesheet" type="text/css" />
+  <link href="<?php echo $app->url('/assets/styles/semantic.min.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
   <link href="<?php echo $app->url('/assets/styles/application.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
 </head>
 <body>
   <!-- Header -->
-  <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="<?= $app->url('/'); ?>">Packagim</a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-    <?php if($app['user']->isLoggedIn()):
-        $user = $app['user'];
-    ?>
-      <li class="dropdown">
-        <a href="<?php echo $app->url('/users/' . $user->id); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user->name; ?> <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="<?php echo $app->url('/users/' . $user->id); ?>">Profile</a></li>
-          <li class="divider"></li>
-          <li><a href="<?php echo $app->url('/logout'); ?>">Logout</a></li>
-        </ul>
-      </li>
-    <?php else: ?>
-      <li><a href="<?php echo $app->url('/login'); ?>">Sign In</a></li>
-    <?php endif; ?>
-    </ul>
-  </div>
-
-  <div class="container">
-    <!-- Content -->
-    <div class="row">
-      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-        <div id="sidebar">
-          <ul id="nav_sidebar">
-          <li><a href="<?php echo $app->url('/'); ?>">Home</a></li>
-        <ul>
+  <h1 class="ui header">Packagim</h1>
+  <div class="ui large purple inverted menu">
+    <a class="active item">
+      <i class="home icon"></i> Home
+    </a>
+    <a class="item">
+      <i class="search icon"></i> Packages
+    </a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search Packages...">
+          <i class="search link icon"></i>
         </div>
       </div>
+    <?php if($user->isLoggedIn()): ?>
+      <a href="<?php echo $app->url('/users/' . $user->id); ?>">
+        <i class="user icon"></i> Profile
+      </a>
+      <a href="<?php echo $app->url('/logout'); ?>">Logout</a>
+    <?php else: ?>
+      <div class="item">
+        <a href="<?php echo $app->url('/oauth/github'); ?>" class="ui red button">
+          <i class="github icon"></i> Sign In with Github
+        </a>
+      </div>
+    <?php endif; ?>
+    </div>
+  </div>
 
-      <div id="content_container" class="col-12 col-sm-9 col-md-9 col-lg-9" style="margin-left: 0;">
+  <div class="ui grid">
+    <!-- Content -->
+    <div class="row">
+      <div class="two wide column"></div>
+      <div id="content_container" class="twelve wide column">
         <div id="content" class="bBox">
           <?php echo $yield; ?>
         </div>
@@ -66,8 +68,7 @@ $app = app();
 
   <!-- JavaScripts -->
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo $app->url('assets/scripts/bootstrap.min.js'); ?>"></script>
-  <script type="text/javascript" src="<?php echo $app->url('assets/scripts/bootstrap-datetimepicker.min.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo $app->url('assets/scripts/semantic.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo $app->url('assets/scripts/application.js'); ?>"></script>
 </body>
 </html>

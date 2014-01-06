@@ -13,6 +13,7 @@ if(BULLET_ENV == 'production') {
     ini_set('display_errors', '0');
 
     // Force HTTPS only
+    /*
     if(!$request->isCli()) {
         if ($request->isSecure()) {
             header('Strict-Transport-Security: max-age=31536000');
@@ -21,6 +22,7 @@ if(BULLET_ENV == 'production') {
             die();
         }
     }
+   */
 }
 
 // Throw Exceptions for everything so we can see the errors

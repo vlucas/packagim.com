@@ -19,6 +19,7 @@
         "vlucas/spot":           "~0.9.8",
         "vlucas/hyperspan":      "~0.1",
         "opauth/opauth":         "~0.4.4",
-        "opauth/github":         "~0.1.0"
+        "opauth/github":         "~0.1.0",
+        "symfony/finder": "~2.4"
     }
 }

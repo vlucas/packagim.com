@@ -12,7 +12,7 @@ web1:
     - "rm -rf vendor composer.lock"
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install;"
   after_deploy:
-    - "php index.php -u 'db/migrate'"
+    - "php www/index.php -u 'db/migrate'"
   php_date_timezone: "UTC"
   php_session_save_handler: redis
   php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
@@ -32,12 +32,12 @@ web1:
 # Daemon process that sends push notifications
 worker1:
   type: php
-  exec: "php index.php -u task/daemon"
+  exec: "php www/index.php -u task/daemon"
   after_build:
     - "rm -rf vendor composer.lock"
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install;"
   after_deploy:
-    - "php index.php -u 'db/migrate'"
+    - "php www/index.php -u 'db/migrate'"
   php_date_timezone: "UTC"
   php_session_save_handler: redis
   php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
