@@ -7,7 +7,7 @@ $app->path('oauth', function($request) {
         });
 
         // Oauth callback
-        $this->path('callback', function($request) {
+        $this->path('oauth2callback', function($request) {
             $this->get(function($request) {
                 // Run Oauth based on current request URI
                 return $this['opauth']->run();
