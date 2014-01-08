@@ -6,22 +6,24 @@ $app = app();
 <head>
   <title>Application Error</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="<?php echo $app->url('/assets/styles/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
-  <link href="<?php echo $app->url('/assets/styles/application.css'); ?>" rel="stylesheet" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css" />
+  <link href="<?php echo $app->url('/assets/styles/semantic.min.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
+  <link href="<?php echo $app->url('/assets/styles/application.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
 </head>
-<body>
-  <div class="container">
-
+<body class="error">
+  <div class="ui grid">
     <!-- Content -->
-    <div class="row text-center">
-      <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-        <div class="panel panel-danger">
-          <div class="panel-heading">
-            <h1 class="panel-title"><?php echo isset($title) ? $title : 'Application Error'; ?></h1>
-          </div>
-          <div class="panel-body">
+    <div class="row">
+      <div class="three wide column"></div>
+      <div class="ten wide column">
+        <div class="ui red segment">
+          <h1 class="ui header">
+            <i class="ui warning icon"></i>
+            <?php echo isset($title) ? $title : 'Application Error'; ?>
+          </h1>
+          <div class="ui clearing divider"></div>
+          <div id="content">
             <?php echo $yield; ?>
-          </div>
           </div>
         </div>
       </div>
@@ -30,6 +32,6 @@ $app = app();
 
   <!-- JavaScripts -->
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo $app->url('assets/scripts/bootstrap.min.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo $app->url('assets/scripts/semantic.min.js'); ?>"></script>
 </body>
 </html>

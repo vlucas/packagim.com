@@ -8,7 +8,7 @@ $user = $app['user'];
   <title>Packagim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700" rel="stylesheet" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css" />
   <link href="<?php echo $app->url('/assets/styles/semantic.min.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
   <link href="<?php echo $app->url('/assets/styles/application.css'); ?>" rel="stylesheet" media="screen" type="text/css" />
 </head>
@@ -48,16 +48,14 @@ $user = $app['user'];
     <!-- Content -->
     <div class="row">
       <div class="two wide column"></div>
-      <div id="content_container" class="twelve wide column">
-        <div id="content" class="bBox">
-          <?php echo $yield; ?>
-        </div>
+      <div id="content" class="twelve wide column">
+        <?php echo $yield; ?>
       </div>
     </div>
 
     <!-- Footer -->
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="column">
         <div id="footer">
           <p class="pull-right">Made with &hearts; by <a href="http://vancelucas.com">Vance Lucas</a></p>
           <p>All content &copy; Packagim.com <?php echo date('Y'); ?></p>
