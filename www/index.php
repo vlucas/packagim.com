@@ -33,6 +33,8 @@ require BULLET_APP_ROOT . '/common.php';
 // Require all paths/routes
 $routesDir = BULLET_APP_ROOT . '/routes/';
 require $routesDir . 'index.php';
+require $routesDir . 'search.php';
+require $routesDir . 'packages.php';
 require $routesDir . 'oauth.php';
 
 // CLI routes

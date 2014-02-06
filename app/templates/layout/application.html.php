@@ -1,5 +1,6 @@
 <?php
 $app = app();
+$request = $app->request();
 $user = $app['user'];
 ?>
 <!DOCTYPE html>
@@ -14,21 +15,15 @@ $user = $app['user'];
 </head>
 <body>
   <!-- Header -->
-  <h1 class="ui header">Packagim</h1>
+  <h1 class="ui header">Packagim &mdash; The PHP Package Dependency Manager</h1>
   <div class="ui large purple inverted menu">
-    <a class="active item">
+    <a class="active item" href="/">
       <i class="home icon"></i> Home
     </a>
-    <a class="item">
+    <a class="item" href="/packages">
       <i class="search icon"></i> Packages
     </a>
     <div class="right menu">
-      <div class="item">
-        <div class="ui icon input">
-          <input type="text" placeholder="Search Packages...">
-          <i class="search link icon"></i>
-        </div>
-      </div>
     <?php if($user->isLoggedIn()): ?>
       <a href="<?php echo $app->url('/users/' . $user->id); ?>">
         <i class="user icon"></i> Profile
@@ -41,6 +36,16 @@ $user = $app['user'];
         </a>
       </div>
     <?php endif; ?>
+    </div>
+    <div class="right menu">
+      <form action="/search">
+        <div class="item">
+          <div class="ui icon input">
+            <input name="q" type="text" placeholder="Search Packages...">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 
