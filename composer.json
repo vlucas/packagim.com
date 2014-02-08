@@ -22,5 +22,11 @@
         "opauth/opauth":         "~0.4.4",
         "opauth/github":         "~0.1.0",
         "symfony/finder":        "~2.4"
+    },
+    "extra": {
+        "heroku": {
+            "document-root": "web",
+            "index-document": "index.php"
+        }
     }
 }

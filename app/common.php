@@ -9,8 +9,8 @@ ini_set("session.use_only_cookies", '1'); // Don't allow session_id in URLs
 // Production setting switch
 if(BULLET_ENV == 'production') {
     // Hide errors in production
-    error_reporting(0);
-    ini_set('display_errors', '0');
+    // error_reporting(0);
+    // ini_set('display_errors', '0');
 
     // Force HTTPS only
     /*
